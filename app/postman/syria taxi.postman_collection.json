@@ -1,0 +1,1889 @@
+{
+  "info": {
+    "_postman_id": "b618089f-3654-403a-887d-89f504fedd99",
+    "name": "syria taxi",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "23547766"
+  },
+  "item": [
+    {
+      "name": "Car-Taype",
+      "item": [
+        {
+          "name": "addCarType",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "gggg",
+                  "type": "text",
+                  "uuid": "b7897a0c-e5f0-4107-b2b6-2cab3ac1b859"
+                },
+                {
+                  "key": "type",
+                  "value": "KM",
+                  "type": "text",
+                  "uuid": "e67d78d0-ee3e-401d-a7c0-ac18820038c4"
+                },
+                {
+                  "key": "price",
+                  "value": "1000",
+                  "type": "text",
+                  "uuid": "26d37e81-5e3d-4867-a13d-0df37dbb4a37"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/car-types",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "car-types"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Show CarType Whit Name or Type",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "gggg",
+                  "type": "text",
+                  "uuid": "b7897a0c-e5f0-4107-b2b6-2cab3ac1b859",
+                  "disabled": true
+                },
+                {
+                  "key": "type",
+                  "value": "Time",
+                  "type": "text",
+                  "uuid": "e67d78d0-ee3e-401d-a7c0-ac18820038c4"
+                },
+                {
+                  "key": "price",
+                  "value": "1000",
+                  "type": "text",
+                  "uuid": "26d37e81-5e3d-4867-a13d-0df37dbb4a37",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/car-types?type=Time",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "car-types"
+              ],
+              "query": [
+                {
+                  "key": "type",
+                  "value": "Time",
+                  "type": "text"
+                },
+                {
+                  "key": "name",
+                  "value": "gggg",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "SHOW CarType",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/car-types/1",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "car-types",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UPDATE CareType",
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {}
+          },
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\":1,\r\n    \"type\": \"Time \"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/car-types/update",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "car-types",
+                "update"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete CarType",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/car-types/1",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "car-types",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Show trashed CarType",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/car-types/trashed/all",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "car-types",
+                "trashed",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "restore CarType",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/car-types/1/restore",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "car-types",
+                "1",
+                "restore"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "force Deleat",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/car-types/1/force",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "car-types",
+                "1",
+                "force"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "number",
+                  "value": "admin001",
+                  "type": "text",
+                  "uuid": "26e12a13-d3aa-4b11-8c34-d7971d038a38"
+                },
+                {
+                  "key": "password",
+                  "value": "admin123456",
+                  "type": "text",
+                  "uuid": "c5bacb31-0ab4-44ff-ae57-8ad44d99fb2b"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/login",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "number",
+                  "value": "952562",
+                  "type": "text",
+                  "uuid": "0b5d2415-73d4-42f8-9b1a-60b787afdfa8"
+                },
+                {
+                  "key": "firstName",
+                  "value": "kj",
+                  "type": "text",
+                  "uuid": "76c09620-1251-4e12-b446-947b15cc20b0"
+                },
+                {
+                  "key": "lastName",
+                  "value": "uijh",
+                  "type": "text",
+                  "uuid": "9f5c1028-357d-4a4d-9ada-0d208e5950e3"
+                },
+                {
+                  "key": "password",
+                  "value": "123456789",
+                  "type": "text"
+                },
+                {
+                  "key": "roll",
+                  "value": " Customer",
+                  "type": "text"
+                },
+                {
+                  "key": "banned",
+                  "value": "true",
+                  "type": "text"
+                },
+                {
+                  "key": "expireDate",
+                  "value": "",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "transTypeId",
+                  "value": "2",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/register",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Driver",
+      "item": [
+        {
+          "name": "add Driver",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"firstName\": \"أحمد\",\r\n    \"lastName\": \"محمد\",\r\n    \"number\": \"0958033633\",\r\n    \"password\": \"123456\",\r\n    \"roll\": \"Driver\",\r\n    \"name\": \"سيارة1\",\r\n    \"type\": \"km\",\r\n    \"price\": 150,\r\n    \"image\": \"image.jpg\",\r\n    \"IDImage\": \"id.jpg\",\r\n    \"carNumber\": \"ABC1239\",\r\n    \"insurance\": \"تأمين\",\r\n    \"mechanics\": \"ميكانيك\",\r\n    \"typeCar\": \"car\"\r\n}\r\n\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/drivers/store",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "drivers",
+                "store"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get Drivers",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "carNumber",
+                  "value": "ABC1239",
+                  "type": "text",
+                  "uuid": "215fd727-b793-42b3-a322-c6489f4addd5"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/drivers/index",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "drivers",
+                "index"
+              ],
+              "query": [
+                {
+                  "key": "carNumber",
+                  "value": "ABC1239",
+                  "disabled": true
+                },
+                {
+                  "key": "type",
+                  "value": "car",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "userId",
+                  "value": "4",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ShowDriver",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"firstName\": \"أحمد\",\r\n    \"lastName\": \"محمد\",\r\n    \"number\": \"0512345678\",\r\n    \"password\": \"123456\",\r\n    \"roll\": \"Driver\",\r\n    \"name\": \"سيارة جديدة\",\r\n    \"type\": \"km\",\r\n    \"price\": 150,\r\n    \"image\": \"image.jpg\",\r\n    \"IDImage\": \"id.jpg\",\r\n    \"carNumber\": \"ABC123\",\r\n    \"insurance\": \"تأمين\",\r\n    \"mechanics\": \"ميكانيك\",\r\n    \"typeCar\": \"car\"\r\n}\r\n\r\n"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/drivers/show/1",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "drivers",
+                "show",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "typeCar",
+                  "value": "car",
+                  "type": "text",
+                  "uuid": "99406116-7a31-4ff5-b438-e51cbd898819"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/drivers/update/1",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "drivers",
+                "update",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/drivers/destroy/1",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "drivers",
+                "destroy",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "trashed",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/drivers/trashed/all",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "drivers",
+                "trashed",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "restore Driver",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/drivers/1/restore",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "drivers",
+                "1",
+                "restore"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete Driver",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/drivers/1/force",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "drivers",
+                "1",
+                "force"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "discounts",
+      "item": [
+        {
+          "name": "index",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/discounts/index",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "discounts",
+                "index"
+              ],
+              "query": [
+                {
+                  "key": "code",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "type",
+                  "value": null,
+                  "disabled": true
+                },
+                {
+                  "key": "min_amount",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Store",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "code",
+                  "value": "55",
+                  "type": "text",
+                  "uuid": "10ad8c79-0059-40bd-a94a-8b1f82bd7754"
+                },
+                {
+                  "key": "amount",
+                  "value": "10",
+                  "type": "text",
+                  "uuid": "0db44c18-b317-4b8e-917a-f166b3eb5c02"
+                },
+                {
+                  "key": "type",
+                  "value": "Percentage",
+                  "type": "text",
+                  "uuid": "d31b4458-3f92-47e2-b88a-279b3a96b77a"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/discounts/store",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "discounts",
+                "store"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "show",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/discounts/show/1",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "discounts",
+                "show",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "min_amount",
+                  "value": "10",
+                  "type": "text",
+                  "uuid": "86650cb0-a6b3-44b7-b65a-17d253b81c5c",
+                  "disabled": true
+                },
+                {
+                  "key": "code",
+                  "value": "6",
+                  "type": "text",
+                  "uuid": "319b2c69-37b8-473f-a3eb-bbc814206f96",
+                  "disabled": true
+                },
+                {
+                  "key": "type",
+                  "value": "Fixed",
+                  "type": "text",
+                  "uuid": "20da3f2a-f064-4255-bd2a-dd898173e269",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/discounts/update/1",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "discounts",
+                "update",
+                "1"
+              ],
+              "query": [
+                {
+                  "key": "min_amount",
+                  "value": "11",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/discounts/destroy/1",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "discounts",
+                "destroy",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "findByCode",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/discounts/by-code/6",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "discounts",
+                "by-code",
+                "6"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "validate",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "code",
+                  "value": "6",
+                  "type": "text"
+                },
+                {
+                  "key": "userId",
+                  "value": "1",
+                  "type": "text"
+                },
+                {
+                  "key": "originalPrice",
+                  "value": "200",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/discounts/validate",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "discounts",
+                "validate"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "trashed",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "code",
+                  "value": "6",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "userId",
+                  "value": "1",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "originalPrice",
+                  "value": "200",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/discounts/trashed/all",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "discounts",
+                "trashed",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "restore",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "code",
+                  "value": "6",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "userId",
+                  "value": "1",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "originalPrice",
+                  "value": "200",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/discounts/1/restore",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "discounts",
+                "1",
+                "restore"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "confirmUsage",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"requestId\":1,\r\n    \"userId\":1,\r\n    \"discountId\":1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/discounts/confirm",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "discounts",
+                "confirm"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "statistics",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/discounts/statistics/summary",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "discounts",
+                "statistics",
+                "summary"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "locations",
+      "item": [
+        {
+          "name": "get",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/locations/index",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "locations",
+                "index"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "ff",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "type",
+                  "value": "da",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "latitude",
+                  "value": null,
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "longitude",
+                  "value": null,
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addLocation",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "longitude",
+                  "value": "20",
+                  "type": "text",
+                  "uuid": "b03108a2-df7c-464e-99ea-b31762d56175"
+                },
+                {
+                  "key": "latitude",
+                  "value": "50",
+                  "type": "text",
+                  "uuid": "8dfd1760-dbf1-4ece-84e0-6bdc6683e000"
+                },
+                {
+                  "key": "name",
+                  "value": "jk,",
+                  "type": "text",
+                  "uuid": "da4109fc-49bb-4754-a7bb-481966d1f552"
+                },
+                {
+                  "key": "type",
+                  "value": "pickup",
+                  "type": "text",
+                  "uuid": "c708fd22-0bac-4c49-b98c-5137199c69b9"
+                },
+                {
+                  "key": "description",
+                  "value": "",
+                  "type": "text",
+                  "uuid": "6a73ca9c-2b85-411d-b912-2b3378bae474",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/locations/store",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "locations",
+                "store"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "add Multi",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"locations\": [\r\n      {\r\n        \"longitude\": 36.2767,\r\n        \"latitude\": 33.5138,\r\n        \"name\": \"Damascus\",\r\n        \"type\": \"city\"\r\n      },\r\n      {\r\n        \"longitude\": 36.3032,\r\n        \"latitude\": 33.5092,\r\n        \"name\": \"Umayyad Mosque\"\r\n      }\r\n    ]\r\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/locations/bulk",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "locations",
+                "bulk"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "show",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/locations/show/2",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "locations",
+                "show",
+                "2"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "ff",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "type",
+                  "value": "da",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "latitude",
+                  "value": null,
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "longitude",
+                  "value": null,
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "ll",
+                  "type": "text",
+                  "uuid": "a80734e2-354d-459f-8bc2-f0dba0f4d856"
+                },
+                {
+                  "key": "type",
+                  "value": "dropoff",
+                  "type": "text",
+                  "uuid": "85c61472-4cdd-421d-bc90-a18cb6f34088"
+                },
+                {
+                  "key": "description",
+                  "value": "",
+                  "type": "text",
+                  "uuid": "d93d00d3-b255-40b3-a3c6-61a3df670c5e"
+                },
+                {
+                  "key": "latitude",
+                  "value": "",
+                  "type": "text",
+                  "uuid": "ba51c974-6176-4d8d-aac5-083accd0e5ff"
+                },
+                {
+                  "key": "longitude",
+                  "value": "",
+                  "type": "text",
+                  "uuid": "b2968ad8-6872-43d4-89bb-5afb89ca4918"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/locations/update/1",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "locations",
+                "update",
+                "1"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "ff",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "type",
+                  "value": "da",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "latitude",
+                  "value": null,
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "longitude",
+                  "value": null,
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "ll",
+                  "type": "text",
+                  "uuid": "a80734e2-354d-459f-8bc2-f0dba0f4d856"
+                },
+                {
+                  "key": "type",
+                  "value": "dropoff",
+                  "type": "text",
+                  "uuid": "85c61472-4cdd-421d-bc90-a18cb6f34088"
+                },
+                {
+                  "key": "description",
+                  "value": "",
+                  "type": "text",
+                  "uuid": "d93d00d3-b255-40b3-a3c6-61a3df670c5e"
+                },
+                {
+                  "key": "latitude",
+                  "value": "",
+                  "type": "text",
+                  "uuid": "ba51c974-6176-4d8d-aac5-083accd0e5ff"
+                },
+                {
+                  "key": "longitude",
+                  "value": "",
+                  "type": "text",
+                  "uuid": "b2968ad8-6872-43d4-89bb-5afb89ca4918"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/locations/destroy/1",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "locations",
+                "destroy",
+                "1"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "ff",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "type",
+                  "value": "da",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "latitude",
+                  "value": null,
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "longitude",
+                  "value": null,
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search for nearby locations",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "from_latitude",
+                  "value": "33.5138",
+                  "type": "text"
+                },
+                {
+                  "key": "from_longitude",
+                  "value": "36.2767",
+                  "type": "text"
+                },
+                {
+                  "key": "to_latitude",
+                  "value": "33.5092",
+                  "type": "text"
+                },
+                {
+                  "key": "to_longitude",
+                  "value": "36.3032",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/locations/popular/dropoff",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "locations",
+                "popular",
+                "dropoff"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Calculate distance between two locations",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "from_latitude",
+                  "value": "33.5138",
+                  "type": "text"
+                },
+                {
+                  "key": "from_longitude",
+                  "value": "36.2767",
+                  "type": "text"
+                },
+                {
+                  "key": "to_latitude",
+                  "value": "33.5092",
+                  "type": "text"
+                },
+                {
+                  "key": "to_longitude",
+                  "value": "36.3032",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/locations/distance/calculate",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "locations",
+                "distance",
+                "calculate"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get popular pickup locations",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/locations/popular/pickup",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "locations",
+                "popular",
+                "pickup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get popular dropoff locations",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"latitude\": 33.5092,\r\n    \"longitude\": 36.3032,\r\n    \"distance\": 5\r\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/locations/nearby/search",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "locations",
+                "nearby",
+                "search"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "trashed",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "ll",
+                  "type": "text",
+                  "uuid": "a80734e2-354d-459f-8bc2-f0dba0f4d856"
+                },
+                {
+                  "key": "type",
+                  "value": "dropoff",
+                  "type": "text",
+                  "uuid": "85c61472-4cdd-421d-bc90-a18cb6f34088"
+                },
+                {
+                  "key": "description",
+                  "value": "",
+                  "type": "text",
+                  "uuid": "d93d00d3-b255-40b3-a3c6-61a3df670c5e"
+                },
+                {
+                  "key": "latitude",
+                  "value": "",
+                  "type": "text",
+                  "uuid": "ba51c974-6176-4d8d-aac5-083accd0e5ff"
+                },
+                {
+                  "key": "longitude",
+                  "value": "",
+                  "type": "text",
+                  "uuid": "b2968ad8-6872-43d4-89bb-5afb89ca4918"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/locations/trashed/all",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "locations",
+                "trashed",
+                "all"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "ff",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "type",
+                  "value": "da",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "latitude",
+                  "value": null,
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "longitude",
+                  "value": null,
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "restore",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "ll",
+                  "type": "text",
+                  "uuid": "a80734e2-354d-459f-8bc2-f0dba0f4d856"
+                },
+                {
+                  "key": "type",
+                  "value": "dropoff",
+                  "type": "text",
+                  "uuid": "85c61472-4cdd-421d-bc90-a18cb6f34088"
+                },
+                {
+                  "key": "description",
+                  "value": "",
+                  "type": "text",
+                  "uuid": "d93d00d3-b255-40b3-a3c6-61a3df670c5e"
+                },
+                {
+                  "key": "latitude",
+                  "value": "",
+                  "type": "text",
+                  "uuid": "ba51c974-6176-4d8d-aac5-083accd0e5ff"
+                },
+                {
+                  "key": "longitude",
+                  "value": "",
+                  "type": "text",
+                  "uuid": "b2968ad8-6872-43d4-89bb-5afb89ca4918"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/locations/1/restore",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "locations",
+                "1",
+                "restore"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "ff",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "type",
+                  "value": "da",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "latitude",
+                  "value": null,
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "longitude",
+                  "value": null,
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "forceDelete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "from_latitude",
+                  "value": "33.5138",
+                  "type": "text"
+                },
+                {
+                  "key": "from_longitude",
+                  "value": "36.2767",
+                  "type": "text"
+                },
+                {
+                  "key": "to_latitude",
+                  "value": "33.5092",
+                  "type": "text"
+                },
+                {
+                  "key": "to_longitude",
+                  "value": "36.3032",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/locations/1/force",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "locations",
+                "1",
+                "force"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "requests",
+      "item": [
+        {
+          "name": "New Request",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
