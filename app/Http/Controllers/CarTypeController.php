@@ -91,9 +91,14 @@ class CarTypeController extends Controller
             $carType->name = $request->name;
         }
 
-        if ($request->has('price')) {
-            $carType->price = $request->price;
+        if ($request->has('timePrice')) {
+            $carType->timePrice = $request->timePrice;
         }
+
+        if($request->has('KMPrice')){
+            $carType->KMPrice = $request->KMPrice;
+        }
+
 
         $carType->save();
 

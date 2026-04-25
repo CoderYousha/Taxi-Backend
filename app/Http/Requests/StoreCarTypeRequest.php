@@ -18,7 +18,8 @@ class StoreCarTypeRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255|unique:carTypes,name',
-            'price' => 'required|numeric|min:0|max:99999999.99',
+            'timePrice' => 'required|numeric|min:0|max:99999999.99',
+            'KMPrice' => 'required|numeric|min:0|max:99999999.99'
         ];
     }
 

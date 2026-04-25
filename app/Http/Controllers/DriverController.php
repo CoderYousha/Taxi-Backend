@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Response;
 use App\Http\Requests\DriverActiveRequest;
 use App\Http\Requests\DriverUpdateLocation;
@@ -135,7 +134,7 @@ class DriverController extends Controller
             $filePath = time() . $file->getClientOriginalName();
             $fileType = $file->guessExtension();
             Storage::disk('public')->put($filePath, File::get($file));
-            $file1 = $request->file('IDImage');
+             $file1 = $request->file('IDImage');
             $filePath1 = time() . $file->getClientOriginalName();
             $fileType1 = $file->guessExtension();
             Storage::disk('public')->put($filePath1, File::get($file1));
@@ -172,13 +171,15 @@ class DriverController extends Controller
             ], 400);
         }
     }
-    public  function getImage($path)
+     public  function getImage($path)
     {
         try {
 
-            $responseFile = Storage::disk('public')->get($path);
-            return (new Response($responseFile, 200))
-                ->header('Content-Type', Storage::disk('public')->Storage::mimeType($path));
+                $responseFile = Storage::disk('public')->get($path);
+                return (new Response($responseFile, 200))
+                    ->header('Content-Type', Storage::disk('public')->
+                    Storage::mimeType($path));
+
         } catch (Exception $e) {
             return response()->json([
                 "state" => false,

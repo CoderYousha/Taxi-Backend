@@ -19,8 +19,8 @@ class UpdateDriverRequest extends FormRequest
         return [
             'userId' => 'sometimes|integer|exists:users,id',
             'transTypeId' => 'sometimes|integer|exists:transTypes,id',
-            'image' => 'sometimes|max:255',
-            'IDImage' => 'sometimes|max:255',
+            'image' => 'sometimes|string|max:255',
+            'IDImage' => 'sometimes|string|max:255',
             'carNumber' => [
                 'sometimes',
                 'string',
