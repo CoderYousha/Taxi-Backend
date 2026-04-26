@@ -144,7 +144,7 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
-        $user = auth()->user();
+        $user = $request->user();
 
         if (!$user) {
             return response()->json([

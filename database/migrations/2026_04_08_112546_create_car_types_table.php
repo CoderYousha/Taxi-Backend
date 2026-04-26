@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('carTypes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->enum('type',['KM','Time']);
-            $table->decimal('price', 10, 2);
+            $table->decimal('timePrice', 10, 2);
+            $table->decimal('KMPrice',10,2);
             $table->timestamps();
             $table->softDeletes();
         });

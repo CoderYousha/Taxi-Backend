@@ -25,8 +25,8 @@ class StoreDriverRequest extends FormRequest
             'CarTypeId'=>'required|numeric',
 
             // Driver
-            'image' => 'required|max:255',
-            'IDImage' => 'required|max:255',
+            'image' => 'required|string|max:255',
+            'IDImage' => 'required|string|max:255',
             'carNumber' => 'required|string|max:255|unique:drivers,carNumber',
             'insurance' => 'required|string|max:255',
             'mechanics' => 'required|string|max:255',
