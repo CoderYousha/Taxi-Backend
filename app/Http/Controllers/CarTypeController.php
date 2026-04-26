@@ -21,6 +21,10 @@ class CarTypeController extends Controller
             $query->where('name', 'like', "%$search%");
         }
 
+        if ($request->has('type')) {
+            $type = $request->type;
+            $query->where('type', $type);
+        }
 
         $sortBy = $request->get('sort_by', 'id');
         $sortOrder = $request->get('sort_order', 'desc');
@@ -91,14 +95,13 @@ class CarTypeController extends Controller
             $carType->name = $request->name;
         }
 
-        if ($request->has('timePrice')) {
-            $carType->timePrice = $request->timePrice;
+        if ($request->has('type')) {
+            $carType->type = $request->type;
         }
 
-        if($request->has('KMPrice')){
-            $carType->KMPrice = $request->KMPrice;
+        if ($request->has('price')) {
+            $carType->price = $request->price;
         }
-
 
         $carType->save();
 

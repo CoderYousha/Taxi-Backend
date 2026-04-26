@@ -119,10 +119,25 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function logout(Request $request)
     {
-        //
+        $user = $request->user();
+        if (!$user) {
+            return response()->json([
+                'state' => false,
+                'message' => 'User not authenticated'
+            ], 401);
+        }
+
+        $request->user()->currentAccessToken()->delete();
+
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Logged out successfully'
+        ], 200);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -163,8 +178,32 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function getProfile(Request $request)
     {
-        //
+        $user = $request->user();
+
+        if (!$user) {
+            return response()->json([
+                'state' => false,
+                'message' => 'User not authenticated'
+            ], 401);
+        }
+
+        $driver = Driver::where('userId', $user->id)->first();
+
+        $responseData = [
+            'state' => true,
+            'name' => $user->firstName . ' ' . $user->lastName,
+            'number' => $user->number,
+            'carNumber' => null,
+            'cartype' => null
+        ];
+
+        if ($driver) {
+            $responseData['carNumber'] = $driver->carNumber;
+            $responseData['cartype'] = $driver->type;
+        }
+
+        return response()->json($responseData);
     }
 }

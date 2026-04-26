@@ -36,9 +36,12 @@ Route::get('/user', function (Request $request) {
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/user/update', [UserController::class, 'update'])->middleware('auth:sanctum');
 Route::post('/register', [UserController::class, 'register']);
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth:sanctum');
+Route::post('/getProfile', [UserController::class, 'getProfile'])->middleware('auth:sanctum');
 Route::get('/test', function () {
     return 'API working';
 });
+
 
 Route::prefix('car-types')->group(function () {
     // العمليات الأساسية

@@ -15,13 +15,11 @@ class CarType extends Model
     protected $fillable = [
         'name',
         'type',
-        'timePrice',
-        'KMPrice'
+        'price',
     ];
 
     protected $casts = [
-        'timePrice' => 'decimal:2',
-        'KMPrice'=>'decimal:2',
+        'price' => 'decimal:2',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
         'deleted_at' => 'datetime',
