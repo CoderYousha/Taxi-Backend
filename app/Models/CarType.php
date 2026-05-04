@@ -16,7 +16,8 @@ class CarType extends Model
         'name',
         'type',
         'timePrice',
-        'KMPrice'
+        'KMPrice',
+        'openPrice'
     ];
 
     protected $casts = [

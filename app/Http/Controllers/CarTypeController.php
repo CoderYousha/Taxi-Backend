@@ -100,6 +100,9 @@ class CarTypeController extends Controller
             $carType->KMPrice = $request->KMPrice;
         }
 
+        if ($request->has('openPrice')) {
+            $carType->openPrice = $request->openPrice;
+        }
 
         $carType->save();
 
