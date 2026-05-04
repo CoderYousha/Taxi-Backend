@@ -16,7 +16,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'number' => 'required|string|max:10',
+            'number' => ['required', 'regex:/^((00|\+)963|0)9[345689][0-9]{7}$/'],
             'password' => 'required|string|min:6'
         ];
     }
@@ -25,7 +25,7 @@ class LoginRequest extends FormRequest
     {
         return [
             'number.required' => 'Phone number required',
-            'number.max' => 'The phone number must not exceed 10 digits.',
+            'number.regex' => 'Invalid Phone number',
             'password.required' => 'Password required',
             'password.min' => 'The password must be at least 6 characters.'
         ];
@@ -39,4 +39,5 @@ class LoginRequest extends FormRequest
             'errors' => $validator->errors()
         ], 422));
     }
+
 }

@@ -10,21 +10,16 @@ class CreateUserRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        // فقط الأدمن يمكنه إنشاء مستخدمين
         return true;
     }
 
     public function rules(): array
     {
         return [
-            'number' => 'required|string|unique:users|max:10',
+            'number' => ['required', 'string', 'unique:users', 'regex:/^((00|\+)963|0)9[345689][0-9]{7}$/'],
             'firstName' => 'required|string|max:255',
             'lastName' => 'required|string|max:255',
             'password' => 'required|string|min:6',
-            'roll' => 'required|in:Admin,Driver,Customer',
-            'banned' => 'sometimes',
-            'expireDate' => 'nullable|date',
-            'transTypeId' => 'nullable|required_if:roll,Driver|exists:carTypes,id'
         ];
     }
 
@@ -32,14 +27,12 @@ class CreateUserRequest extends FormRequest
     {
         return [
             'number.required' => 'Phone number is required',
+            'number.regex' => 'Invalid Phone number',
             'number.unique' => 'Phone number is already registered',
             'firstName.required' => 'First name is required',
             'lastName.required' => 'Last name is required',
             'password.required' => 'Password is required',
-            'password.min' => 'Password must be at least 6 characters',
-            'roll.required' => 'Role is required',
-            'roll.in' => 'Role must be either Admin, Driver or Customer',
-            'transTypeId.required_if' => 'Car type is required for drivers'
+            'password.min' => 'Password must be at least 6 characters'
         ];
     }
 

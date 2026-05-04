@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CarType;
 use App\Http\Requests\StoreCarTypeRequest;
 use App\Http\Requests\UpdateCarTypeRequest;
+use App\Models\Driver;
 use Illuminate\Http\Request;
 use Laravel\Reverb\Loggers\Log;
 
@@ -95,7 +96,7 @@ class CarTypeController extends Controller
             $carType->timePrice = $request->timePrice;
         }
 
-        if($request->has('KMPrice')){
+        if ($request->has('KMPrice')) {
             $carType->KMPrice = $request->KMPrice;
         }
 
@@ -120,6 +121,7 @@ class CarTypeController extends Controller
                 'message' => 'Data not found'
             ], 404);
         }
+
 
         $carType->delete();
 
@@ -169,6 +171,13 @@ class CarTypeController extends Controller
             ], 404);
         }
 
+        $checkDriver = Driver::where('transTypeId', $id)->first();
+        if ($checkDriver != null) {
+            return response()->json([
+                'state' => false,
+                'message' => 'لا يمكن حذف فئة يوجد سائقين بها'
+            ], 400);
+        }
         $carType->forceDelete();
 
         return response()->json([

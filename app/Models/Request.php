@@ -25,6 +25,7 @@ class RequestModel extends Model
         'destLocationId',
         'requestDate',
         'locationDesc',
+        'driverId',
         'predectedCost'
     ];
 

@@ -15,12 +15,21 @@ class NewRequestEvent implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+
+    private $driver = null;
     /**
      * Create a new event instance.
      */
-    public function __construct()
+    public function __construct($driver)
     {
-        //
+        $this->driver = $driver;
+    }
+
+    public function broadcastWith()
+    {
+        return [
+            
+        ];
     }
 
     /**
@@ -31,7 +40,7 @@ class NewRequestEvent implements ShouldBroadcastNow
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('channel-name'),
+            new PrivateChannel('driver.' . $this->driver),
         ];
     }
 }

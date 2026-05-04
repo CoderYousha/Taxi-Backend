@@ -17,6 +17,7 @@ use App\Http\Controllers\DriverController;
     broadcast(new MessagePosted('hello from Postman2'));
     return response()->json(['status'=>'sent']);
 });*/
+
 Route::post('/broadcast', function (Request $request) {
     Log::info('Route HIT');
 
@@ -35,9 +36,14 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/user/update', [UserController::class, 'update'])->middleware('auth:sanctum');
+Route::post('/addEmployee', [UserController::class, 'addEmployee'])->middleware('auth:sanctum');
+Route::post('/updateEmployee', [UserController::class, 'updateEmployee'])->middleware('auth:sanctum');
+Route::post('/deleteEmployee', [UserController::class, 'deleteEmployee'])->middleware('auth:sanctum');
+Route::get('/getEmployee', [UserController::class, 'getEmployee'])->middleware('auth:sanctum');
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth:sanctum');
-Route::get('/getProfile', [UserController::class, 'getProfile'])->middleware('auth:sanctum');
+Route::post('/changePassword', [UserController::class, 'changePassword'])->middleware('auth:sanctum');
+Route::post('/getProfile', [UserController::class, 'getProfile'])->middleware('auth:sanctum');
 Route::get('/test', function () {
     return 'API working';
 });
@@ -49,7 +55,7 @@ Route::prefix('car-types')->group(function () {
     Route::post('/store', [CarTypeController::class, 'store']);          // POST /api/car-types
     Route::get('/show/{id}', [CarTypeController::class, 'show']);        // GET /api/car-types/{id}
     Route::put('/update', [CarTypeController::class, 'update']);      // PUT /api/car-types/{id}
-    Route::delete('/destroy/{id}', [CarTypeController::class, 'destroy']);  // DELETE /api/car-types/{id}
+    Route::delete('/destroy/{id}', [CarTypeController::class, 'forceDelete']);  // DELETE /api/car-types/{id}
 
     // عمليات soft delete
     Route::get('/trashed/all', [CarTypeController::class, 'trashed']);           // GET /api/car-types/trashed/all

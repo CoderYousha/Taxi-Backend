@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewRequestEvent;
 use App\Models\RequestModel;
 use App\Models\RequestHistory;
 use App\Models\Driver;
 use App\Models\User;
 use App\Models\Discount;
 use App\Http\Requests\StoreRequestRequest;
+use App\Models\Location;
 use Illuminate\Http\Request as HttpRequest;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Redis;
 
 class RequestController extends Controller
 {
@@ -19,25 +23,63 @@ class RequestController extends Controller
      */
     public function store(StoreRequestRequest $request)
     {
-        $validated = $request->validated();
+        //startLocationLongitude
+        //startLocationLatitude
+        $startLocation = Location::where('longitude', $request['startLocationLongitude'])
+            ->where('latitude', $request['startLocationLatitude'])
+            ->first();
 
-        $validated['status'] = RequestModel::STATUS_PENDING;
+        $destLocation = Location::where('longitude', $request['destLocationLongitude'])
+            ->where('latitude', $request['destLocationLatitude'])
+            ->first();
 
-        $newRequest = RequestModel::create($validated);
+        if (!$startLocation) {
+            $startLocation = Location::create([
+                'longitude' => $request['startLocationLongitude'],
+                'latitude' => $request['startLocationLatitude']
+            ]);
+        }
+
+        if (!$destLocation) {
+            $destLocation = Location::create([
+                'longitude' => $request['destLocationLongitude'],
+                'latitude' => $request['destLocationLatitude']
+            ]);
+        }
+
+        if ($request->type === RequestModel::TYPE_IMMEDIATE) {
+            $request['requestDate'] = Carbon::now()->format('Y-m-d');
+        }
+
+
+
+        $newRequest = RequestModel::create([
+            'userId' => $request->user()->id,
+            'carTypeId' => $request['carTypeId'],
+            'type' => $request['type'],
+            'status' => RequestModel::STATUS_PENDING,
+            'startLocationId' => $startLocation['id'],
+            'destLocationId' => $destLocation['id'],
+            'requestDate' => $request['requestDate'],
+            'locationDesc' => $request['locationDesc'],
+            'predectedCost' => $request['predectedCost']
+        ]);
+
 
         // If immediate request, find a driver immediately
         if ($request->type === RequestModel::TYPE_IMMEDIATE) {
-            $this->findImmediateDriver($newRequest);
+            $this->findImmediateDriver($request['startLocationLongitude'], $request['startLocationLatitude']);
         } else {
             // If scheduled request, send notification to drivers
             $this->notifyDriversForScheduledRequest($newRequest);
         }
 
-        
+
 
         return response()->json([
             'success' => true,
             'data' => $newRequest,
+            'channel' => 'trip.' . $newRequest['id'],
             'message' => 'Request created successfully'
         ], 201);
     }
@@ -45,20 +87,29 @@ class RequestController extends Controller
     /**
      * Find a driver for immediate request
      */
-    private function findImmediateDriver($request)
+    private function findImmediateDriver($lng, $lat)
     {
         // Find available drivers
-        $availableDrivers = Driver::where('status', 'available')
-            ->where('type', $request->carType->type ?? 'car')
-            ->get();
+        $busyDrivers = RequestModel::where('status', 'Running')
+            ->pluck('driverId');
 
-        foreach ($availableDrivers as $driver) {
-            // Send notification to driver
-            $this->sendNotificationToDriver($driver, $request);
+        $drivers = Redis::georadius(
+            'drivers',
+            $lng,
+            $lat,
+            1,
+            'km'
+        );
+
+
+        $driverIds=Driver::whereIn('id',$drivers)
+        ->whereNotIn('id',$busyDrivers)
+        ->pluck('id');
+
+        foreach ($driverIds as $driver) {
+            broadcast(new NewRequestEvent($driver));
         }
 
-        // If no driver found within 30 seconds, convert request to scheduled
-        // (This part can be implemented using a Job)
     }
 
     /**
@@ -142,7 +193,6 @@ class RequestController extends Controller
                 ],
                 'message' => 'Booking accepted successfully'
             ]);
-
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json([
@@ -175,7 +225,7 @@ class RequestController extends Controller
             ], 404);
         }
 
-        if ($request->status !== RequestModel::STATUS_RESERVED ) {
+        if ($request->status !== RequestModel::STATUS_RESERVED) {
             return response()->json([
                 'success' => false,
                 'message' => 'Cannot start trip at this status'
@@ -241,7 +291,6 @@ class RequestController extends Controller
                 'finalCost' => $finalCost,
                 'message' => 'Trip finished successfully'
             ]);
-
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json([
@@ -292,7 +341,7 @@ class RequestController extends Controller
     public function getDriverTrips($driverId)
     {
         $trips = RequestHistory::where('driverId', $driverId)
-            ->with(['request' => function($q) {
+            ->with(['request' => function ($q) {
                 $q->with(['user', 'startLocation', 'destLocation']);
             }])
             ->orderBy('created_at', 'desc')

@@ -15,7 +15,7 @@ class AdminSeeder extends Seeder
     public function run(): void
     {
          User::updateOrCreate(
-            ['number' => 'admin001'], // البحث بالرقم
+            ['number' => '+963930553648'], // البحث بالرقم
             [
                 'firstName' => 'Admin',
                 'lastName' => 'System',
@@ -28,6 +28,6 @@ class AdminSeeder extends Seeder
 
 
         $this->command->info('✓Users have been created successfully');
-        $this->command->info('  - ADMIN: admin001 / admin123456');
+        $this->command->info('  - ADMIN: +963944767773 / admin123456');
     }
 }

@@ -19,6 +19,7 @@ class StoreCarTypeRequest extends FormRequest
         return [
             'name' => 'required|string|max:255|unique:carTypes,name',
             'timePrice' => 'required|numeric|min:0|max:99999999.99',
+            'openPrice' => 'required|numeric|min:0|max:99999999.99',
             'KMPrice' => 'required|numeric|min:0|max:99999999.99'
         ];
     }
@@ -28,9 +29,18 @@ class StoreCarTypeRequest extends FormRequest
         return [
             'name.required' => 'اسم نوع العداد مطلوب',
             'name.unique' => 'اسم نوع العداد موجود مسبقاً',
-            'price.required' => 'السعر مطلوب',
-            'price.numeric' => 'السعر يجب أن يكون رقماً',
-            'price.min' => 'السعر يجب أن يكون أكبر من أو يساوي 0',
+
+            'openPrice.required' => 'السعر الابتدائي مطلوب',
+            'openPrice.numeric' => 'السعر الابتدائي يجب أن يكون رقماً',
+            'openPrice.min' => 'السعر الابتدائي يجب أن يكون أكبر من أو يساوي 0',
+            
+            'timePrice.required' => 'سعر الدقيقة مطلوب',
+            'timePrice.numeric' => 'سعر الدقيقة يجب أن يكون رقماً',
+            'timePrice.min' => 'سعر الدقيقة يجب أن يكون أكبر من أو يساوي 0',
+            
+            'KMPrice.required' => 'سعر الكيلو متر مطلوب',
+            'KMPrice.numeric' => 'سعر الكيلو متر يجب أن يكون رقماً',
+            'KMPrice.min' => 'سعر الكيلو متر يجب أن يكون أكبر من أو يساوي 0',
         ];
     }
 

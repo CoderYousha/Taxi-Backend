@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('requests', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('userId')->unsigned();
+            $table->integer('driverId')->unsigned()->nullable();
             $table->integer('carTypeId')->unsigned();
             $table->enum('type',['Schedual','Immediate']);
             $table->enum('status',['Pending','Running','Finished','Removed','Reserved']);

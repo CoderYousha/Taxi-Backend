@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('number',10)->unique();
+            $table->string('number', 14)->unique();
             $table->string('password');
-            $table->enum('roll',['Admin','Driver','Customer']);
+            $table->enum('roll', ['Admin', 'Driver', 'Customer']);
             $table->string('firstName');
             $table->string('lastName');
             $table->boolean('banned')->default(false);
@@ -23,7 +23,6 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-
     }
 
     /**

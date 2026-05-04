@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->decimal('timePrice', 10, 2);
             $table->decimal('KMPrice',10,2);
+            $table->decimal('openPrice',10,2);
             $table->timestamps();
             $table->softDeletes();
         });

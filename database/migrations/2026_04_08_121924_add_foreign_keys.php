@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-     public function up(): void
+    public function up(): void
     {
         // drivers
         Schema::table('drivers', function (Blueprint $table) {
@@ -14,7 +14,7 @@ return new class extends Migration
                 ->references('id')->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('restrict');
-             $table->foreign('transTypeId')
+            $table->foreign('transTypeId')
                 ->references('id')->on('carTypes')
                 ->onDelete('cascade')
                 ->onUpdate('restrict');
@@ -24,6 +24,11 @@ return new class extends Migration
         Schema::table('requests', function (Blueprint $table) {
             $table->foreign('userId')
                 ->references('id')->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('restrict');
+
+            $table->foreign('DriverId')
+                ->references('id')->on('drivers')
                 ->onDelete('cascade')
                 ->onUpdate('restrict');
 
